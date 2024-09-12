@@ -1,0 +1,46 @@
+<h1>AI Component Generator</h1>
+
+<!-- Form to select component type and provide query -->
+<form id="component-form">
+  <div>
+    <label for="component-type">Select Component Type:</label>
+    <select id="component-type" name="component_type">
+      <option value="card">Card</option>
+      <option value="form">Form</option>
+      <option value="table">Table</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="user-query">Describe the component you want to generate:</label>
+    <textarea id="user-query" name="user_query" rows="5" cols="50" placeholder="Describe your component..."></textarea>
+  </div>
+
+  <br>
+  <button type="button" onclick="submitQuery()">Generate Component</button>
+</form>
+
+<!-- Section to preview the generated code -->
+<h2>Generated Component Code:</h2>
+<div id="component-code" style="border: 1px solid #ddd; padding: 20px;"></div>
+
+<!-- Section to display the live preview of the component -->
+<h2>Live Component Preview:</h2>
+<div id="component-preview" style="border: 1px solid #ddd; padding: 20px;"></div>
+
+<!-- JavaScript to handle form submission and update both sections -->
+<script>
+  function submitQuery() {
+    var componentType = document.getElementById('component-type').value;
+    var userQuery = document.getElementById('user-query').value;
+
+    // Simulating LLM-generated code for now
+    var generatedCode = `<div class="${componentType}">Generated ${componentType} based on query: "${userQuery}"</div>`;
+
+    // Display the generated code as plain text
+    document.getElementById('component-code').textContent = generatedCode;
+
+    // Render the component in the live preview area
+    document.getElementById('component-preview').innerHTML = generatedCode;
+  }
+</script>
