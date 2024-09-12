@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   post 'generate_component', to: 'test#generate_component'
+  resources :codegen, only: [:new, :create]
 end
