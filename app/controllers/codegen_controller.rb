@@ -8,7 +8,9 @@ class CodegenController < ApplicationController
   def create
     @prompt = params[:prompt]
     @component_type = params[:component_type]
-    @html_code = chatgpt.send_message(@prompt, template(@component_type))
+    # Retrieve the appropriate HTML template using the ComponentTemplates class
+    template_html = ComponentTemplates.get_template(@component_type)
+    @html_code = chatgpt.send_message(@prompt, template_html)
     render :new
   end
 
@@ -18,12 +20,12 @@ class CodegenController < ApplicationController
     @chatgpt ||= ChatGptHelper.new
   end
 
-  def template(type)
-    # You could modify this to use the class you wrote
-    return card_template if type == "card"
-    return form_template if type == "form"
-    return table_template if type == "table"
-  end
+  # def template(type)
+  #   # You could modify this to use the class you wrote
+  #   return card_template if type == "card"
+  #   return form_template if type == "form"
+  #   return table_template if type == "table"
+  # end
 
   def card_template
     <<~HTML
