@@ -10,7 +10,14 @@ class CodegenController < ApplicationController
     @component_type = params[:component_type]
     # Retrieve the appropriate HTML template using the ComponentTemplates class
     template_html = ComponentTemplates.get_template(@component_type)
-    @html_code = chatgpt.send_message(@prompt, template_html)
+    
+    # Check if an image was uploaded
+    image_url = nil
+    if params[:image].present?
+      image_url = ImageUploadHelper.get_image_url(params[:image])
+    end
+
+    @html_code = chatgpt.send_message(@prompt, template_html, image_url)
     render :new
   end
 
