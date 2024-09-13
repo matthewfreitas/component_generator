@@ -11,6 +11,7 @@ class ChatGptHelper
       parameters: {
         model: "gpt-4o",
         messages: messages(content, template, image_url),
+        temperature: 1.0
       }
     )
 

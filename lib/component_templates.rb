@@ -11,13 +11,6 @@ class ComponentTemplates
         <!-- Card Body -->
         <div class="card-body p-6">
           <!-- Placeholder for content -->
-          <p>Content goes here...</p>
-        </div>
-
-        <!-- Card Footer -->
-        <div class="card-footer py-4 px-12 rounded-b-lg">
-          <!-- Placeholder for footer -->
-          <p>Footer content goes here...</p>
         </div>
       </div>
     HTML
