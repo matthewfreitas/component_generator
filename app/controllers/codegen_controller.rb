@@ -14,7 +14,7 @@ class CodegenController < ApplicationController
     # Check if an image was uploaded
     image_url = nil
     if params[:image].present?
-      image_url = ImageUploadHelper.get_image_url(params[:image])
+      image_url = ImageUploadHelper.new(@component_type).get_image_url(params[:image])
     end
 
     @html_code = chatgpt.send_message(@prompt, template_html, image_url)

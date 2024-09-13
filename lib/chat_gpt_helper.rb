@@ -9,7 +9,7 @@ class ChatGptHelper
   def send_message(content, template, image_url = nil)
     response = @client.chat(
       parameters: {
-        model: "gpt-4o-2024-08-06",
+        model: "gpt-4o",
         messages: messages(content, template, image_url),
       }
     )
