@@ -20,7 +20,7 @@ class ChatGptHelper
   def messages(content, template, image_url)
 
     full_content = [
-      { type: "text", text: content },
+      { type: "text", text: content || "Create a card using the image"},
     ]
 
     if image_url
@@ -38,9 +38,8 @@ class ChatGptHelper
   def system_prompt(template)
     <<~PROMPT
       You are an assistant that generates snippets of HTML + TailwindCSS code based on user prompts that conforms to a template.
-      The template is as follows: #{template}. Output new HTML code that generally follows the template outline.
-      You should only generate code that contains HTML with TailwindCSS. Return just the raw snippet code; do not apply additional formatting to the response. For example, do not include triple backticks or other formatting.
-      If an image URL is provided, incorporate it into the generated HTML where appropriate.
+      The template is as follows: #{template}. Output an HTML snippet that uses the template.
+      Return just the raw snippet code; do not apply additional formatting to the response. For example, do not include triple backticks or other formatting.
     PROMPT
   end
 end
