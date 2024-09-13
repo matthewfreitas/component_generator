@@ -25,8 +25,10 @@ class ChatGptHelper
   end
 
   def system_prompt(template)
-    "You are an assistant that generates HTML snippets based on user prompts that conforms to a template. " \
-      "The template is as follows: #{template}. Output new HTML code that conforms to the template outline." \
-      "You should only generate HTML code. Do not apply additional formatting to the HTML code."
+    <<~PROMPT
+      You are an assistant that generates snippets of HTML + TailwindCSS code based on user prompts that conforms to a template.
+      The template is as follows: #{template}. Output new HTML code that generally follows the template outline.
+      You should only generate code that contains HTML with TailwindCSS. Return just the raw snippet code; do not apply additional formatting to the response.
+    PROMPT
   end
 end
